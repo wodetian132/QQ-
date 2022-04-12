@@ -152,22 +152,22 @@ def main_program():
                     sat = 0
                     lasttime = ""
                     return 0
-                if "恢复" in qqcontext and "pin" in qqcontext:
+                if "恢复" in qqcontext and "0" in qqcontext:
                     mood = 1
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"已经恢复啦"})
                     continue
-                if "暂停" in qqcontext and "pin" in qqcontext:
+                if "暂停" in qqcontext and "0" in qqcontext:
                     print("————暂停————")
                     pp = input(">>>")
                     print("—————恢复—————")
-                if "课中" in qqcontext and "pin" in qqcontext:
+                if "课中" in qqcontext and "0" in qqcontext:
                     print("————课中签到————")
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"已开启"})
                 if "重启" in qqcontext and "pin" in qqcontext:
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"已经重启"})
                     sat = 2
                     return 0
-                if "set" in qqcontext and "pin" in qqcontext :
+                if "set" in qqcontext and "0" in qqcontext :
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"现在是签到阶段，发送你的口令"})
                     while True:
                         rev = rev_msg()
@@ -286,13 +286,13 @@ def out_program():
             qqcontext = rev['raw_message']  # 转存内容
             qq = rev['sender']['user_id']  # 转存发送者信息
             if rev["message_type"] == "private":  # 私聊
-                if "结束" in qqcontext and "pin" in qqcontext:
+                if "结束" in qqcontext and "0" in qqcontext:
                     mood = 0
                     print("————签退被结束————")
                     send_msg({'msg_type': 'private', 'number': qq, 'msg': "打卡结束"})
                     send_msg({'msg_type': 'group', 'number': 234901344, 'msg':"打卡已经结束"})
                     continue
-                if "返回签到" in qqcontext and "pin" in qqcontext:
+                if "返回签到" in qqcontext and "0" in qqcontext:
                     mood = 1
                     sat = 1
                     print("————签到重新开始————")
@@ -303,15 +303,15 @@ def out_program():
                     ae = ''.join(search_data)
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"未签退:\n"+ae})
                     continue
-                if "暂停" in qqcontext and "pin" in qqcontext:
+                if "暂停" in qqcontext and "0" in qqcontext:
                     print("————暂停————")
                     pp = input(">>>")
                     print("—————恢复—————")
-                if "恢复" in qqcontext and "pin" in qqcontext:
+                if "恢复" in qqcontext and "0" in qqcontext:
                     mood = 1
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"已经恢复啦"})
                     continue
-                if "set" in qqcontext and "pin" in qqcontext :
+                if "set" in qqcontext and "0" in qqcontext :
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"现在是签退时间，发送你的口令"})
                     while True:
                         rev = rev_msg()
@@ -349,10 +349,10 @@ def out_program():
                                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"好的，打卡设置已完成" })
 
                                 break
-                if "puk" in qqcontext and "pin" in qqcontext:
+                if "puk" in qqcontext and "0" in qqcontext:
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':puk_out})
                     continue
-                if "重启" in qqcontext and "pin" in qqcontext:
+                if "重启" in qqcontext and "0" in qqcontext:
                     send_msg({'msg_type': 'private', 'number': qq, 'msg':"已经重启"})
                     sat = 2
                     return 0
