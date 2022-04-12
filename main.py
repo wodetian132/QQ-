@@ -23,7 +23,7 @@ lasttime = ""
 
 huancun = []
 
-personqq = { 'QQnumber' : 'name',}
+personqq = {'QQnumber': 'name',}
 
 def send_msg(resp_dict):
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -256,10 +256,13 @@ def main_program():
                         if "你" in se:
                             send_msg({'msg_type': 'group', 'number': 234901344, 'msg':f"[CQ:at,qq={qq}] {se}"})
                         huancun.append(se)
-                        if len(huancun)>=4:
-                            mee = ''.join(se)
+                        mee = ""
+                        if len(huancun)>=5:
+                            for i in huancun:
+                                mee = mee+i+"\n"
                             send_msg({'msg_type': 'group', 'number': 234901344, 'msg':mee})
                             huancun = []
+                            mee = ""
                         print("----------",se)
                         res = open(f'J:\\Users\\1\\Desktop\\result\\result_in_{puk}_{run_id}.txt', 'a+', encoding='UTF-8')
                         res.write(f"{se}\n")
@@ -393,10 +396,13 @@ def out_program():
                         if "你" in se:
                             send_msg({'msg_type': 'group', 'number': 234901344, 'msg':f"[CQ:at,qq={qq}] {se}"})
                         huancun.append(se)
-                        if len(huancun)>=4:
-                            mee = ''.join(se)
+                        if len(huancun)>=5:
+                            mee = ""
+                            for i in huancun:
+                                mee = mee+i+"\n"
                             send_msg({'msg_type': 'group', 'number': 234901344, 'msg':mee})
                             huancun = []
+                            mee = ""
                         print("----------",se)
                         res = open(f'J:\\Users\\1\\Desktop\\result\\result_out_{puk_out}_{run_id}.txt', 'a+', encoding='UTF-8')
                         res.write(f"{se}\n")
